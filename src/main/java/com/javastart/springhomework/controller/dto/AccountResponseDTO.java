@@ -3,6 +3,7 @@ package com.javastart.springhomework.controller.dto;
 import com.javastart.springhomework.entity.Account;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AccountResponseDTO {
 
@@ -19,6 +20,8 @@ public class AccountResponseDTO {
         name = account.getName();
         email = account.getEmail();
         bills = account.getBills().stream()
+                .map(BillResponseDTO::new)
+                .collect(Collectors.toList());
     }
 
     public AccountResponseDTO(Long accountId, String name, String email, List<BillResponseDTO> bills) {
