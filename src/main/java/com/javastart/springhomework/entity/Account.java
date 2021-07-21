@@ -15,7 +15,7 @@ public class Account {
 
     private String email;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Bill> bills;
 
     public Account(String name, String email, List<Bill> bills) {
