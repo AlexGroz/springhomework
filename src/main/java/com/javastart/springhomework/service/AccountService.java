@@ -2,6 +2,7 @@ package com.javastart.springhomework.service;
 
 import com.javastart.springhomework.entity.Account;
 import com.javastart.springhomework.entity.Bill;
+import com.javastart.springhomework.exceptions.AccountNotFoundException;
 import com.javastart.springhomework.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class AccountService {
     }
 
     public Account getById(Long accountId) {
-        accountRepository.findById(accountId).orElseThrow()
+        accountRepository.findById(accountId)
+                .orElseThrow(()-> new AccountNotFoundException("Unable to find account with id: " + accountId));
     }
 }
