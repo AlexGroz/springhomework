@@ -1,5 +1,7 @@
 package com.javastart.springhomework.controller.dto;
 
+import com.javastart.springhomework.entity.Account;
+
 import java.util.List;
 
 public class AccountResponseDTO {
@@ -11,6 +13,13 @@ public class AccountResponseDTO {
     private String email;
 
     private List<BillResponseDTO> bills;
+
+    public AccountResponseDTO(Account account){
+        accountId = account.getAccountId();
+        name = account.getName();
+        email = account.getEmail();
+        bills = account.getBills().stream()
+    }
 
     public AccountResponseDTO(Long accountId, String name, String email, List<BillResponseDTO> bills) {
         this.accountId = accountId;

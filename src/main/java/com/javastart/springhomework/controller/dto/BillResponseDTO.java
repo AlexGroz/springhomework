@@ -1,5 +1,7 @@
 package com.javastart.springhomework.controller.dto;
 
+import com.javastart.springhomework.entity.Bill;
+
 import java.math.BigDecimal;
 
 public class BillResponseDTO {
@@ -9,6 +11,12 @@ public class BillResponseDTO {
     private BigDecimal amount;
 
     private Boolean isDefault;
+
+    public BillResponseDTO(Bill bill){
+        billId = bill.getBillId();
+        amount = bill.getAmount();
+        isDefault = bill.getDefault();
+    }
 
     public BillResponseDTO(Long billId, BigDecimal amount, Boolean isDefault) {
         this.billId = billId;
