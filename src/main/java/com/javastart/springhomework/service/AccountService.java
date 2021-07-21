@@ -1,8 +1,12 @@
 package com.javastart.springhomework.service;
 
+import com.javastart.springhomework.entity.Account;
+import com.javastart.springhomework.entity.Bill;
 import com.javastart.springhomework.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -12,5 +16,10 @@ public class AccountService {
     @Autowired
     public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
+    }
+
+    public Long save(String name, String email, List<Bill> bills){
+        Account account = new Account(name, email, bills);
+        return accountRepository.save(account).getAccountId();
     }
 }
