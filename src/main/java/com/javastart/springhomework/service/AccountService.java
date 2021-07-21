@@ -22,4 +22,8 @@ public class AccountService {
         Account account = new Account(name, email, bills);
         return accountRepository.save(account).getAccountId();
     }
+
+    public Account getById(Long accountId) {
+        accountRepository.findById(accountId).orElseThrow()
+    }
 }
