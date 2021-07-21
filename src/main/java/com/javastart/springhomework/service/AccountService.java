@@ -25,7 +25,8 @@ public class AccountService {
     }
 
     public Account getById(Long accountId) {
-        accountRepository.findById(accountId)
+        return accountRepository.findById(accountId)
                 .orElseThrow(()-> new AccountNotFoundException("Unable to find account with id: " + accountId));
+
     }
 }
