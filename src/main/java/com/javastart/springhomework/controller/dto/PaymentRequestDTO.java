@@ -7,17 +7,17 @@ import java.math.BigDecimal;
 public class PaymentRequestDTO {
 
     @JsonProperty("account_id")
-    private Long id;
+    private Long accountId;
 
     @JsonProperty("amount")
     private BigDecimal amount;
 
-    public Long getId() {
-        return id;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     public BigDecimal getAmount() {
