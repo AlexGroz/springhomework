@@ -24,6 +24,8 @@ public class TransferService {
         Account accountTo = accountService.getById(accountIdTo);
         Bill billFrom = findDefaultBill(accountFrom);
         Bill billTo = findDefaultBill(accountTo);
+        billFrom.setAmount(billFrom.getAmount().subtract(amount));
+        billTo.setAmount(billTo.getAmount().add(amount));
         return null;
     }
 
