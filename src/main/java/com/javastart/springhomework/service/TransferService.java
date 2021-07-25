@@ -22,11 +22,16 @@ public class TransferService {
     public Object transfer(Long accountIdFrom, Long accountIdTo, BigDecimal amount) {
         Account accountFrom = accountService.getById(accountIdFrom);
         Account accountTo = accountService.getById(accountIdTo);
-        Bill billFrom = accountFrom.getBills().stream().
+        Bill billFrom = findDefaultBill(accountFrom);
+        Bill billTo = findDefaultBill(accountTo);
+        return null;
+    }
+
+    private Bill findDefaultBill(Account accountFrom) {
+        return accountFrom.getBills().stream().
                 filter(Bill::getDefault).
                 findAny().
                 orElseThrow(() -> new NotDefaultBillException("Unable to find default bill for account with id: "
-                        + accountIdFrom));
-        return null;
+                        + accountFrom.getAccountId()));
     }
 }
